@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Proza+Libre:400,400i,600,700,800&subset=cyrillic-ext');
+
+@import "functions";
+@import "mixin";
+@import "variables";
+@import "helper";
+@import "reset";
+@import "layout";
+
+@import "partials/header";
+@import "partials/footer";
+
+@import "pages/home";
+
+body {
+    overflow-y: hidden;
+    background-color: $white;
+    font-family: $os;
+    width: 100%;
+}

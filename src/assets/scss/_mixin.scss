@@ -1,0 +1,17 @@
+@mixin mq($q) {
+    @media only screen and(max-width: $q * 1px) {
+        @content;
+    }
+}
+
+@mixin mq($q) {
+    @media only screen and(max-width: $q * 1px) {
+        @content;
+    }
+}
+
+@mixin mm($q) {
+    @media only screen and(min-width: $q * 1px) {
+        @content;
+    }
+}
