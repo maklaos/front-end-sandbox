@@ -13,10 +13,10 @@ const config = {
         host: 'localhost',
         port: 9000,
         hot: true,
+        inline: true,
         watchOptions: {
             poll: true,
             ignored: '/node_modules/',
-            contentBase: './'
         },
     },
     plugins: [
@@ -30,7 +30,8 @@ const config = {
         }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].css"
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ],
     module: {
@@ -44,7 +45,7 @@ const config = {
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    process.argv.includes("--watch") ? "style-loader" : MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
                 ]
