@@ -7,4 +7,4 @@
 'npm run dev' - compile to ./dist folder
 'npm run prod' - compile to ./dist folder in production mode
 'npm run server' - run ./dist folder as site
-'npm run watch' - auto compiling
+'npm run watch' - auto compiling (no page reload)
