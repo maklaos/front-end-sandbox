@@ -80,7 +80,7 @@ const config = {
     },
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: process.argv.includes("--watch") ? 'vue/dist/vue.js' : 'vue/dist/vue.min'
         }
     },
 };
