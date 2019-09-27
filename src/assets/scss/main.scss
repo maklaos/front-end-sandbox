@@ -10,11 +10,10 @@
 @import "partials/header";
 @import "partials/footer";
 
-@import "pages/home";
-
 body {
-    overflow-y: hidden;
+    overflow-x: hidden;
     background-color: $white;
-    font-family: $os;
+    font-family: $font;
+    font-weight: normal;
     width: 100%;
 }

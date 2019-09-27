@@ -1,10 +1,6 @@
 <template>
     <div class="root">
-        <input type="text" name="test" placeholder="min 3 symbols">
-        <section>
-            <h3>somethings</h3>
-        </section>
-        <router-link to="/test">link to test</router-link>
+        <test-component></test-component>
     </div>
 </template>
 
@@ -13,7 +9,7 @@
         name: "Home",
         data: function () {
             return {
-
+                "some": true
             };
         },
         mounted: function () {

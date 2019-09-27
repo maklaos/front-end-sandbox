@@ -1,5 +1,5 @@
 import Home from './components/Home.vue';
-import Test from './components/Test.vue';
+import Catalog from './components/Catalog.vue';
 
 const routes = [
     {
@@ -8,9 +8,9 @@ const routes = [
         name: "Home"
     },
     {
-        path: "/test",
-        component: Test,
-        name: "Test"
+        path: "/category",
+        component: Catalog,
+        name: "Catalog"
     }
 ];
 

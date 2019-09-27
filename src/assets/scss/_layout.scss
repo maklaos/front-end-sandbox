@@ -1,12 +1,23 @@
 .container {
-    width: 1170px;
+    max-width: 1440px;
+    width: calc(100% - 120px);
     margin: 0 auto;
 
-    @include mq(1366) {
-        width: 960px;
+    @include mq($md) {
+        max-width: 900px;
+        width: calc(100% - 60px);
     }
 
-    @include mq(1024) {
+    @include mq($sm) {
+        max-width: 660px;
+    }
+
+    @include mq($xs) {
+        max-width: 546px;
+    }
+
+    @include mq($xxs) {
+        max-width: 290px;
         width: 100%;
     }
 

@@ -1,16 +1,16 @@
 let http = require('http');
 let fs = require('fs');
 let path = require('path');
+let port = 8888;
 
 http.createServer(function (request, response) {
     console.log('request ', request.url);
 
     let filePath = './dist' + request.url;
-    console.log(filePath);
+
     if (!request.url.includes(".")) {
         filePath = (filePath + "/index.html").replace("//", "/");
     }
-    console.log(filePath);
 
     let extname = String(path.extname(filePath)).toLowerCase();
     let contentType = 'text/html';
@@ -28,7 +28,7 @@ http.createServer(function (request, response) {
         '.ttf': 'application/font-ttf',
         '.eot': 'application/vnd.ms-fontobject',
         '.otf': 'application/font-otf',
-        '.svg': 'application/image/svg+xml'
+        '.svg': 'image/svg+xml'
     };
 
     contentType = mimeTypes[extname] || 'application/octet-stream';
@@ -53,4 +53,6 @@ http.createServer(function (request, response) {
         }
     });
 
-}).listen(8888);
+}).listen(port);
+console.log('Node server running on port ' + port);
+console.log('http://localhost:' + port);

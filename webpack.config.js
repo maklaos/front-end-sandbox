@@ -3,6 +3,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
     entry: ['./src/assets/main.js'],
@@ -23,16 +24,25 @@ const config = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
+            title: 'Home'
         }),
         new HtmlWebpackPlugin({
-            filename: 'test/index.html',
-            template: './src/index.html'
+            filename: 'category/index.html',
+            template: './src/index.html',
+            title: 'Category'
         }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: __dirname + '/src/static',
+                to: __dirname + '/dist/static',
+                toType: 'dir'
+            }
+        ], {debug:'debug'})
     ],
     module: {
         rules: [
@@ -43,20 +53,36 @@ const config = {
                 },
             },
             {
-                test: /\.scss$/,
+                test: /\.scss|\.css$/,
                 use: [
                     process.argv.includes("--watch") ? "style-loader" : MiniCssExtractPlugin.loader,
                     "css-loader",
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')({
+                                'overrideBrowserslist': ['> 1%', 'last 2 versions', 'iOS > 9', 'Firefox ESR', 'dead']
+                            })],
+                        }
+                    },
                     "sass-loader"
                 ]
             },
+            {
+                test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.eot$/,
+                loader: "file-loader",
+                options: {
+                    name: '/[path][name].[ext]',
+                    context: 'src'
+                },
+            }
         ]
     },
     resolve: {
         alias: {
             vue: 'vue/dist/vue.js'
         }
-    }
+    },
 };
 
 module.exports = config;

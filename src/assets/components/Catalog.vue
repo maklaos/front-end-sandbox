@@ -1,15 +1,12 @@
 <template>
-    <div class="root">
-        <section>
-            <h3>somethings</h3>
-        </section>
-        <router-link to="/">link to home</router-link>
+    <div>
+        <test-component></test-component>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Test",
+        name: "Category",
         data: function () {
             return {
 
